@@ -23,7 +23,8 @@ contract MinterUpgradeable is IMinter, OwnableUpgradeable {
     uint public teamRate;
     uint public constant MAX_TEAM_RATE = 50; // 5%
 
-    uint public constant WEEK = 86400 * 7; // allows minting once per week (reset every Thursday 00:00 UTC)
+    // uint public constant WEEK = 86400 * 7; // allows minting once per week (reset every Thursday 00:00 UTC)
+    uint public constant WEEK = 3600; // allows minting once per week (reset every Thursday 00:00 UTC)
     uint public weekly; // represents a starting weekly emission of 2.6M BXT (BXT has 18 decimals)
     uint public active_period;
     uint public constant LOCK = 86400 * 7 * 52 * 2;
@@ -64,7 +65,7 @@ contract MinterUpgradeable is IMinter, OwnableUpgradeable {
 
 
         active_period = ((block.timestamp + (2 * WEEK)) / WEEK) * WEEK;
-        weekly = 2_600_000 * 1e18; // represents a starting weekly emission of 2.6M BXT (BXT has 18 decimals)
+        weekly = 750_000 * 1e18; // represents a starting weekly emission of 0.75M BXT (BXT has 18 decimals)
         isFirstMint = true;
 
     }

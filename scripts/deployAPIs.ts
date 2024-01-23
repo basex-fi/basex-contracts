@@ -1,8 +1,8 @@
 import { ethers, upgrades } from "hardhat";
 import hre from "hardhat";
 
-const voterV3 = "0x6079f8B37980181b4aC09610f6Ff4088A87Bc282";
-const rewardDistributor = "0x7E342297C17b595d9f66889f99D30295a7739674";
+const voterV3 = "0x50263AF5b4e2d063500f72ca0c690dA932FfF4EC";
+const rewardDistributor = "0x965e55D20470BE722d55d16d8CBdDeFda977503A";
 
 async function main() {
   console.log("Deploying APIs...");

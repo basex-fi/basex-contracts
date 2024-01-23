@@ -50,7 +50,8 @@ contract GaugeExtraRewarder is Ownable {
 
     uint public lastDistributedTime;
     uint public rewardPerSecond;
-    uint public distributePeriod = 86400 * 7;
+    // uint public distributePeriod = 86400 * 7;
+    uint public distributePeriod = 3600;
     uint public ACC_TOKEN_PRECISION = 1e12;
 
 
@@ -121,16 +122,24 @@ contract GaugeExtraRewarder is Ownable {
 
     function setDistributionRate(uint256 amount) public onlyOwner {
         updatePool();
+        // 当前合约的rewardToken余额必须大于或等于amount
         require(IERC20(rewardToken).balanceOf(address(this)) >= amount);
+        // 未分发数量
         uint256 notDistributed;
+        //上一次分发时间>0 并且 当前区块时间小于上一次分发时间
         if (lastDistributedTime > 0 && block.timestamp < lastDistributedTime) {
+            // 距离上一次分发时间过了多少秒
             uint256 timeLeft = lastDistributedTime.sub(block.timestamp);
+            // 计算距离上一次，未分发数量
             notDistributed = rewardPerSecond.mul(timeLeft);
         }
 
+        // 总数量等于amount + 未分发数量
         amount = amount.add(notDistributed);
+        // 计算每秒奖励数量
         uint256 _rewardPerSecond = amount.div(distributePeriod);
         rewardPerSecond = _rewardPerSecond;
+        // 更新上一次分发时间
         lastDistributedTime = block.timestamp.add(distributePeriod);
     }
 

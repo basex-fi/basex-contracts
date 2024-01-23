@@ -20,7 +20,8 @@ interface IERC20Ext {
 contract Bribe is ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    uint256 public constant WEEK = 7 days; // rewards are released over 7 days
+    // uint256 public constant WEEK = 7 days; // rewards are released over 7 days
+    uint256 public constant WEEK = 3600; // rewards are released over 7 days
     uint256 public firstBribeTimestamp;
 
     /* ========== STATE VARIABLES ========== */

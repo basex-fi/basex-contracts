@@ -32,7 +32,8 @@ contract RewardsDistributor is ReentrancyGuard, IRewardsDistributor {
         uint max_epoch
     );
 
-    uint constant WEEK = 7 * 86400;
+    // uint constant WEEK = 7 * 86400;
+    uint constant WEEK = 3600;
 
     uint public start_time;
     uint public last_token_time;

@@ -2,7 +2,8 @@ import { ethers, upgrades } from "hardhat";
 import { ZeroAddress } from "ethers";
 import hre from "hardhat";
 
-const UNISWAP_V3_FACTORY_ADDRESS = "0x7721FFcbf6af0bd43FCE74B8C450cEeBfDCe8DE3";
+const UNISWAP_V3_FACTORY_ADDRESS = "0xdeb5da25276F0e9776044b5a7f45Fd692B1dAF8B";
+// const UNISWAP_V3_FACTORY_ADDRESS = "0x7721FFcbf6af0bd43FCE74B8C450cEeBfDCe8DE3";
 const GAMMA_FEE_RECEIPIENT = "0xfbE533Ac756f65E783B00df7B860755959B51880";
 
 async function main() {

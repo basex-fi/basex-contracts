@@ -37,9 +37,11 @@ contract VoterV3 is IVoter, OwnableUpgradeable, ReentrancyGuardUpgradeable {
 
 
     uint internal index;                                        // gauge index
-    uint internal constant DURATION = 7 days;                   // rewards are released over 7 days
+    // uint internal constant DURATION = 7 days;                   // rewards are released over 7 days
+    uint internal constant DURATION = 3600;                   // rewards are released over 7 days
     uint public VOTE_DELAY;                                     // delay between votes in seconds
-    uint public constant MAX_VOTE_DELAY = 7 days;               // Max vote delay allowed
+    // uint public constant MAX_VOTE_DELAY = 7 days;               // Max vote delay allowed
+    uint public constant MAX_VOTE_DELAY = 3600;               // Max vote delay allowed
 
 
     mapping(address => uint) internal supplyIndex;              // gauge    => index
@@ -685,7 +687,8 @@ contract VoterV3 is IVoter, OwnableUpgradeable, ReentrancyGuardUpgradeable {
     function notifyRewardAmount(uint amount) external {
         require(msg.sender == minter);
         _safeTransferFrom(base, msg.sender, address(this), amount);     // transfer the distro in
-        uint _totalWeight = totalWeightAt(_epochTimestamp() - 604800);   // minter call notify after updates active_period, loads votes - 1 week
+        // uint _totalWeight = totalWeightAt(_epochTimestamp() - 604800);   // minter call notify after updates active_period, loads votes - 1 week
+        uint _totalWeight = totalWeightAt(_epochTimestamp() - 3600);   // minter call notify after updates active_period, loads votes - 1 week
         uint256 _ratio = 0;
 
         if(_totalWeight > 0) _ratio = amount * 1e18 / _totalWeight;     // 1e18 adjustment is removed during claim
@@ -775,7 +778,8 @@ contract VoterV3 is IVoter, OwnableUpgradeable, ReentrancyGuardUpgradeable {
     /// @dev    this function track the gauge index to emit the correct $the amount after the distribution
     function _updateForAfterDistribution(address _gauge) private {
         address _pool = poolForGauge[_gauge];
-        uint256 _time = _epochTimestamp() - 604800;
+        // uint256 _time = _epochTimestamp() - 604800;
+        uint256 _time = _epochTimestamp() - 3600;
         uint256 _supplied = weightsPerEpoch[_time][_pool];
 
         if (_supplied > 0) {
