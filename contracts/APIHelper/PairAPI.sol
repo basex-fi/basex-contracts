@@ -87,7 +87,8 @@ contract PairAPI is Initializable {
     uint256 public constant MAX_PAIRS = 1000;
     uint256 public constant MAX_EPOCHS = 200;
     uint256 public constant MAX_REWARDS = 16;
-    uint256 public constant WEEK = 7 * 24 * 60 * 60;
+    uint256 public constant WEEK =  60 * 60;
+    // uint256 public constant WEEK = 7 * 24 * 60 * 60;
 
 
     IUniswapV3Factory public pairFactory;

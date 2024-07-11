@@ -50,7 +50,8 @@ contract GaugeExtraRewarder is Ownable {
 
     uint public lastDistributedTime;
     uint public rewardPerSecond;
-    uint public distributePeriod = 86400 * 7;
+    // uint public distributePeriod = 86400 * 7;
+    uint public distributePeriod = 3600;
     uint public ACC_TOKEN_PRECISION = 1e12;
 
 
