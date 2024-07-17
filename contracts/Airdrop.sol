@@ -29,6 +29,10 @@ contract VeBXT_Airdrop {
         uint256 amount = airdropAmounts[msg.sender];
         require(amount > 0, "No airdrop amount available");
 
+        address base = votingEscrow.token();
+
+        IERC20(base).approve(address(votingEscrow), amount);
+
         claimed[msg.sender] = true;
         votingEscrow.create_lock_for(amount, TWO_YEARS, msg.sender);
 
