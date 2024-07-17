@@ -2,17 +2,20 @@ import { ethers, upgrades } from "hardhat";
 import { ZeroAddress } from "ethers";
 import hre from "hardhat";
 
-const UNISWAP_V3_FACTORY_ADDRESS = "0x7721FFcbf6af0bd43FCE74B8C450cEeBfDCe8DE3";
-const GAMMA_FEE_RECEIPIENT = "0xfbE533Ac756f65E783B00df7B860755959B51880";
+// const UNISWAP_V3_FACTORY_ADDRESS = "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24"; //testnet 
+const UNISWAP_V3_FACTORY_ADDRESS = "0xdC323d16C451819890805737997F4Ede96b95e3e"; //mainnet 
+const GAMMA_FEE_RECEIPIENT = "0x0eDA51539C4A3E2989E86f1aeFeb4435FebF3Fa3";
 
 async function main() {
   console.log("Deploying contracts...");
 
   // BXT
-  const BXT = await ethers.deployContract("BaseXToken");
+  /* const BXT = await ethers.deployContract("BaseXToken");
   await BXT.waitForDeployment();
   console.log(`BXT deployed. Address: ${BXT.target}`);
-  await verifyContract(BXT.target, []);
+  await verifyContract(BXT.target, []); */
+  const BXT: any = {};
+  BXT.target = "0xB97008CA4F8D72C81489d6728c0036c0C4187ce8";
 
   // veArtProxy
   const veArtProxy = await ethers.deployContract("VeArtProxyUpgradeable");

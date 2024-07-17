@@ -32,5 +32,32 @@
     "ts-node": ">=8.0.0",
     "typechain": "^8.3.0",
     "typescript": ">=4.5.0"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test test/testCL.ts",
+    "deploy": "npx hardhat run scripts/deploy.ts",
+    "deploy-mainnet": "npx hardhat run scripts/deploy.ts --network mainnet",
+    "deploy-testnet": "npx hardhat run scripts/deploy.ts --network testnet",
+    "deployTestTokens": "npx hardhat run scripts/deployTestTokens.ts",
+    "deployTestTokens-testnet": "npx hardhat run scripts/deployTestTokens.ts  --network testnet",
+    "deployTestTokens-optopia": "npx hardhat run scripts/deployTestTokens.ts  --network optopia",
+    "deployTestTokens-sepolia": "npx hardhat run scripts/deployTestTokens.ts  --network sepolia",
+    "deployTokens": "npx hardhat run scripts/deployTokens.ts",
+    "deployTokens-optopia": "npx hardhat run scripts/deployTokens.ts  --network optopia",
+    "deployTokens-mainnet": "npx hardhat run scripts/deployTokens.ts --network mainnet ",
+    "deployTokens-merlin": "npx hardhat run scripts/deployTokens.ts --network merlin ",
+    "deployTokens-sepolia": "npx hardhat run scripts/deployTokens.ts --network sepolia ",
+    "deployAPIs": "npx hardhat run scripts/deployAPIs.ts",
+    "deployAPIs-mainnet": "npx hardhat run scripts/deployAPIs.ts --network mainnet",
+    "deployAPIs-testnet": "npx hardhat run scripts/deployAPIs.ts --network testnet",
+    "deployTestPool": "npx hardhat run scripts/deployTestPool.ts",
+    "deployTestPool-testnet": "npx hardhat run scripts/deployTestPool.ts  --network testnet",
+    "preScript": "npx hardhat run scripts/preScript.ts",
+    "preScript-mainnet": "npx hardhat run scripts/preScript.ts --network mainnet",
+    "preScript-testnet": "npx hardhat run scripts/preScript.ts --network testnet",
+    "deployWETH-optopia": "npx hardhat run scripts/deployWETH.ts  --network optopia",
+    "upgradeContract-testnet": "npx hardhat run scripts/upgradeContract.ts  --network testnet",
+    "deployAirdrop-testnet": "npx hardhat run scripts/deployAirdrop.ts  --network testnet"
   }
 }

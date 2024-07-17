@@ -4,18 +4,13 @@ import hre from "hardhat";
 async function main() {
   console.log("Deploying tokens and reward distributor...");
 
-  // TUSDCToken
-  /* const tusdc = await ethers.deployContract("TUSDCToken");
-  await tusdc.waitForDeployment();
-  await verifyContract(tusdc.target, []);
+  // WETH
+  const weth = await ethers.deployContract("WETH9");
+  await weth.waitForDeployment();
+  await verifyContract(weth.target, []);
 
-  console.log(`TUSDCToken deployed. Address: ${tusdc.target}`); */
-
-  /* const bxt = await ethers.deployContract("BaseXToken");
-  await bxt.waitForDeployment();
-  await verifyContract(bxt.target, []);
-
-  console.log(`BXT deployed. Address: ${bxt.target}`); */
+  console.log(`WETH deployed. Address: ${weth.target}`);
+  
 }
 
 async function verifyContract(contractAddress: any, input: any[]) {
