@@ -17,6 +17,9 @@ const config: HardhatUserConfig = {
           },
         },
       },
+      {
+        version: "0.4.18",
+      },
     ],
   },
   defaultNetwork: "testnet",
@@ -25,18 +28,22 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545",
     },
     testnet: {
-      url: "https://goerli.base.org",
+      url: "https://base-sepolia-rpc.publicnode.com",
       timeout: 200000000,
       gasPrice: 5100000000,
       gas: 5100000,
-      accounts: [process.env.PRIVATEKEY as string],
+      accounts: [process.env.TESTER_PRIVATEKEY as string],
     },
-
     mainnet: {
       url: "https://mainnet.base.org",
-      timeout: 200000000,
-      gasPrice: 5100000000,
-      gas: 5100000,
+      accounts: [process.env.PRIVATEKEY as string],
+    },
+    merlin: {
+      url: "https://rpc.merlinchain.io",
+      accounts: [process.env.PRIVATEKEY as string],
+    },
+    optopia: {
+      url: 'https://rpc-mainnet.optopia.ai',
       accounts: [process.env.PRIVATEKEY as string],
     },
   },
@@ -44,16 +51,18 @@ const config: HardhatUserConfig = {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     apiKey: {
-      testnet: "abc",
+      testnet: process.env.APIKEY,
       mainnet: process.env.APIKEY,
+      merlin: process.env.APIKEY,
+      optopia: process.env.APIKEY,
     } as any,
     customChains: [
       {
         network: "testnet",
-        chainId: 84531,
+        chainId: 84532,
         urls: {
-          apiURL: "https://api-goerli.basescan.org/api",
-          browserURL: "https://goerli.basescan.org/",
+          apiURL: "https://api-sepolia.basescan.org/api",
+          browserURL: "https://sepolia.basescan.org/",
         },
       },
       {
@@ -62,6 +71,22 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api.basescan.org/api",
           browserURL: "https://basescan.org/",
+        },
+      },
+      {
+        network: "merlin",
+        chainId: 4200,
+        urls: {
+          apiURL: "https://scan.merlinchain.io/api",
+          browserURL: "https://scan.merlinchain.io",
+        },
+      },
+      {
+        network: 'optopia',
+        chainId: 62050,
+        urls: {
+          apiURL: 'https://scan.optopia.ai/api',
+          browserURL: 'https://scan.optopia.ai',
         },
       },
     ],

@@ -1,8 +1,8 @@
 import { ethers, upgrades } from "hardhat";
 import hre from "hardhat";
 
-const voterV3 = "0x6079f8B37980181b4aC09610f6Ff4088A87Bc282";
-const rewardDistributor = "0x7E342297C17b595d9f66889f99D30295a7739674";
+const voterV3 = "0x1368DA5bAA4809ddde62EcBe0a9c778EC0128F31";
+const rewardDistributor = "0xcbDf501CBab8c5994C8F9a337Dfe5e35eD70c748";
 
 async function main() {
   console.log("Deploying APIs...");
@@ -13,7 +13,7 @@ async function main() {
     initializer: "initialize",
   });
   await pairAPI.waitForDeployment();
-  console.log(`PairAPI deployed. Address: ${pairAPI.target}`);
+  console.log(`PairAPI deployed. Address========> : ${pairAPI.target}`);
 
   await hre.run("verify:verify", {
     address: pairAPI.target,
@@ -30,7 +30,7 @@ async function main() {
     }
   );
   await veNFTAPI.waitForDeployment();
-  console.log(`veNFTAPI deployed. Address: ${veNFTAPI.target}`);
+  console.log(`veNFTAPI deployed. Address========> : ${veNFTAPI.target}`);
 
   await hre.run("verify:verify", {
     address: veNFTAPI.target,
@@ -43,7 +43,7 @@ async function main() {
     initializer: "initialize",
   });
   await rewardAPI.waitForDeployment();
-  console.log(`RewardAPI deployed. Address: ${rewardAPI.target}`);
+  console.log(`RewardAPI deployed. Address========> : ${rewardAPI.target}`);
 
   await hre.run("verify:verify", {
     address: rewardAPI.target,
